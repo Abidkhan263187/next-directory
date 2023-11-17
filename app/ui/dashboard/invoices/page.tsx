@@ -3,8 +3,18 @@ import { lusitana } from '@/app/ui/font';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { CreateInvoice } from './buttons';
- 
-export default async function Page() {
+
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
